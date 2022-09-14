@@ -6,8 +6,7 @@ import { ImgurClient } from 'imgur';
 import jsQR from "jsqr";
 const lzw = require("node-lzw");
 var jimp = require("jimp");
-require('dotenv').config();
-const client = new ImgurClient({ clientId: 'CLIENT-ID' });
+const client = new ImgurClient({ clientId: 'be05dae43f90d96' });
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed

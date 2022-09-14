@@ -3,6 +3,7 @@
   "displayName": "QRshared",
   "description": "Share code by QR Code",
   "version": "0.0.1",
+  "publisher": "QRshared",
   "engines": {
     "vscode": "^1.71.0"
   },
@@ -49,11 +50,14 @@
     "typescript": "^4.7.4"
   },
   "dependencies": {
-    "dotenv": "^16.0.2",
     "imgur": "^2.2.0",
     "jimp": "^0.16.0",
     "jsqr": "^1.4.0",
     "node-lzw": "^0.3.1",
     "qrcode": "^1.5.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ThisisYoYoDev/QRshared"
   }
 }
