@@ -11,10 +11,6 @@ const client = new ImgurClient({ clientId: 'be05dae43f90d96' });
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "qrshared" is now active!');
-
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with registerCommand
 	// The commandId parameter must match the command field in package.json
@@ -34,19 +30,10 @@ export function activate(context: vscode.ExtensionContext) {
 			return;
 		}
 		const compressedText = lzw.encode(Buffer.from(text, 'utf-8').toString());
-		console.log(compressedText.length, text.length);
-
-		const decodedText = lzw.decode(compressedText);
-		if (decodedText !== text) {
-			console.log('Decoded text is not the same as the original text');
-		} else {
-			console.log('Decoded text is the same as the original text');
-		}
 
 		// Convert the text to QR code
 		QRCode.toDataURL(compressedText, { errorCorrectionLevel: 'L' }, async function (err: any, url: any) {
 			if (err) {
-				console.log("Error generating QR code, too long data");
 				vscode.window.showInformationMessage('QRshared: Error generating QR code, too long data');
 				return;
 			}
@@ -59,7 +46,6 @@ export function activate(context: vscode.ExtensionContext) {
 			// get the link to the image
 			const link = response.data.link;
 			if (!link) {
-				console.log("Error generating QR code, too long data");
 				vscode.window.showInformationMessage('QRshared: Error generating QR code, too long data');
 				return;
 			}
@@ -99,8 +85,7 @@ export function activate(context: vscode.ExtensionContext) {
 		});
 	});
 
-	context.subscriptions.push(disposable);
-	context.subscriptions.push(disposable2);
+	context.subscriptions.push(disposable, disposable2);
 }
 
 // this method is called when your extension is deactivated

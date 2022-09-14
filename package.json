@@ -2,7 +2,7 @@
   "name": "qrshared",
   "displayName": "QRshared",
   "description": "Share code by QR Code",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "publisher": "QRshared",
   "engines": {
     "vscode": "^1.71.0"
@@ -24,6 +24,18 @@
       {
         "command": "qrshared.receiveCode",
         "title": "QRshared: Receive Code via QR Code"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "qrshared.shareCode",
+        "key": "ctrl+q+c",
+        "mac": "cmd+q+c"
+      },
+      {
+        "command": "qrshared.receiveCode",
+        "key": "ctrl+q+v",
+        "mac": "cmd+q+v"
       }
     ]
   },
