@@ -2,6 +2,8 @@
 
 QRshared allow you to share code / text by generating a QR code.
 
+*The idea was inspired by my Daddy.*
+
 ## Features
 
 - Generate QR code from text
