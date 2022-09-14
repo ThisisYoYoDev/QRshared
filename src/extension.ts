@@ -30,6 +30,9 @@ export function activate(context: vscode.ExtensionContext) {
 		// print the selected text
 		const selection = editor.selection;
 		const text = editor.document.getText(selection);
+		if (text.length === 0) {
+			return;
+		}
 		const compressedText = lzw.encode(Buffer.from(text, 'utf-8').toString());
 		console.log(compressedText.length, text.length);
 
@@ -44,7 +47,7 @@ export function activate(context: vscode.ExtensionContext) {
 		QRCode.toDataURL(compressedText, { errorCorrectionLevel: 'L' }, async function (err: any, url: any) {
 			if (err) {
 				console.log("Error generating QR code, too long data");
-				vscode.window.showInformationMessage('Error generating QR code, too long data');
+				vscode.window.showInformationMessage('QRshared: Error generating QR code, too long data');
 				return;
 			}
 			// open the QR code in a new tab as an image with request
@@ -57,11 +60,11 @@ export function activate(context: vscode.ExtensionContext) {
 			const link = response.data.link;
 			if (!link) {
 				console.log("Error generating QR code, too long data");
-				vscode.window.showInformationMessage('Error generating QR code, too long data');
+				vscode.window.showInformationMessage('QRshared: Error generating QR code, too long data');
 				return;
 			}
 			vscode.env.clipboard.writeText(link);
-			vscode.window.showInformationMessage('QR code copied to clipboard!');
+			vscode.window.showInformationMessage('QRshared: QR code copied to clipboard!');
 		});
 	});
 

@@ -2,7 +2,7 @@
   "name": "qrshared",
   "displayName": "QRshared",
   "description": "Share code by QR Code",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "publisher": "QRshared",
   "engines": {
     "vscode": "^1.71.0"
